@@ -11,7 +11,7 @@
 - **Responsive design** ottimizzato per mobile, tablet e desktop
 - **Font personalizzato** Orbitron
 
-###  Funzionalit� Core
+###  Funzionalità Core
 -  **Catalogo Giochi** - Griglia responsive con card interattive
 -  **Dettagli Giochi** - Pagina dedicata con descrizione, genere e piattaforme
 -  **Gestione Immagini** - Integrazione con storage backend Laravel
