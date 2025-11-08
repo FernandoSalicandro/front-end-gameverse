@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@layer utilities {
+
+    /*TOP DETAILS*/
+    .backBtn {
+        @apply fixed text-white cursor-pointer top-10 left-5 bg-purple-800 hover:bg-purple-800/70 px-4 py-2 rounded-xl flex gap-2 items-center z-50
+    }
+
+    .topDetails-layout {
+        @apply relative flex flex-col items-start w-full h-[350px] sm:h-[450px] lg:h-[500px]
+    }
+
+    .topDetailsBg-layer {
+        @apply relative flex flex-col justify-end w-full h-full bg-cover   max-lg:bg-center
+    }
+
+    .topDetailsBg-dark_overlay {
+        @apply absolute inset-0 bg-black/70
+    }
+
+    .topDetails_details-layout {
+        @apply mb-5 md:mb-20 z-10 w-full flex flex-col items-start
+    }
+
+    .topDetails_game-tag {
+        @apply px-6 py-1 border border-pink-400 bg-pink-600/40 rounded-full ml-3  text-pink-400 font-semibold
+    }
+
+    .topDetails_title-container {
+        @apply bg-clip-text w-full p-3 bg-linear-to-r from-(--primary) to-(--secondary)
+    }
+
+    .topDetails_title-container h1 {
+        @apply text-transparent font-bold text-5xl lg:text-8xl
+    }
+
+    .topDetails_ctaBtn {
+        @apply cursor-pointer  ml-3 flex gap-1 lg:text-lg items-center px-4 py-2 rounded-xl bg-(--primary) animate-pulse
+    }
+    /*FINE TOP DETAILS*/
+
+    /*BOTTOM DETAILS*/
+    .bottomDetails-layout {
+        @apply mx-auto w-full pt-20 p-10 grid grid-cols-1 sm:grid-cols-[60%_40%] bg-linear-to-br
+    }
+
+    .bottomDetails_title-sub-container {
+        @apply bg-clip-text bg-linear-to-r from-(--primary) to-(--secondary)
+    }
+
+    .bottomDetails_title-sub-container h2 {
+        @apply text-transparent text-4xl font-bold mb-10
+    }
+
+    .bottomDetails_title-sub-container p {
+        @apply text-white text-xl max-sm:mb-10
+    }
+
+    .bottomDetails_right-col-layout {
+        @apply flex flex-col p-5 bg-transparent  items-start  rounded-lg border border-gray-700 shadow-xl
+    }
+
+    .bottomDetails_right-title-container {
+        @apply bg-clip-text bg-linear-to-r from-(--primary) to-(--secondary) mb-10
+    }
+
+    .bottomDetails_right-title-container h2 {
+        @apply text-transparent text-2xl
+    }
+
+    .bottomDetails_tags-layout {
+        @apply grid max-md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2
+    }
+    /*FINE BOTTOM DETAILS*/
+}

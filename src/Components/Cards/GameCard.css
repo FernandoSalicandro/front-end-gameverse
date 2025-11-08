@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+
+@layer utilities {
+
+    .gamecard-layout {
+        @apply  cursor-pointer relative rounded-xl overflow-hidden w-[350px] h-[250px]  transition-shadow duration-300;
+    }
+
+    .gamecard-background-layer {
+        @apply absolute inset-0 bg-center bg-cover group-hover:scale-110 transition-transform duration-500
+    }
+
+    .gamecard-info-layer {
+        @apply absolute flex flex-col justify-between inset-0 bg-linear-to-t from-black/80 to-transparent  text-white
+    }
+
+    .gamecard-top-tag {
+        @apply border px-2 py-1 rounded-full bg-cyan-400/50 border-cyan-400 font-bold text-sm
+    }
+
+    .gamecard-bottom-tag {
+        @apply rounded-full text-center text-pink-500 px-2 py-1 border border-pink-700 bg-pink-700/20 inline-block
+    }
+
+    .gamecard-animated-bar {
+        @apply w-0 rounded-lg group-hover:w-full transition-all duration-500 h-1.5 bg-linear-to-r from-cyan-400 to-purple-500 mt-3
+    }
+
+}
