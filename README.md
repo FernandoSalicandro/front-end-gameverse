@@ -2,6 +2,24 @@
 
 **GAMEVERSE** store fittizio per testing dell'API REST della repository final-laravel;
 
+## 📸 Preview
+
+### Desktop
+![Homepage Desktop](src/assets/hero-home-frontend.png)
+![Game Preview Section](src/assets/gamepreviewsection.png)
+![Desktop View](src/assets/desktop.ini)
+
+### Mobile
+<p align="center">
+  <img src="src/assets/mobile.png" width="250" alt="Mobile Home"/>
+  <img src="src/assets/mobile-2.png" width="250" alt="Mobile Catalog"/>
+</p>
+
+<p align="center">
+  <img src="src/assets/mobile-show.png" width="250" alt="Mobile Details"/>
+  <img src="src/assets/mobile-show-2.png" width="250" alt="Mobile Details 2"/>
+</p>
+
 ##  Caratteristiche Principali
 
 ###  Design & UX
