@@ -1,39 +1,43 @@
-import './Homepage.css';
+// React core
+import { useEffect, useRef,useState } from 'react';
+
+// External libraries
 import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
+
+// Components
 import Section from '../../Components/Sections/Section';
+import GameCard from '../../Components/Cards/GameCard.jsx';
 import PrimaryButton from '../../Components/Ui/PrimaryButton';
 import SecondaryButton from '../../Components/Ui/SecondaryButton';
-import useScrollY from '../../Utils/Hooks/useScrollY.jsx'
-import { ChevronDown } from 'lucide-react';
-import GameCard from '../../Components/Cards/GameCard.jsx';
-import useGamesFetch from '../../Utils/Hooks/useGamesFetch.jsx';
-import { useRef } from 'react';
+import SearchBar from '../../Components/SearchBar/SearchBar.jsx';
 
+// Context
+import { useGames } from '../../Context/GlobalContext.jsx';
 
+// Custom hooks (solo quello per scroll)
+import useScrollY from '../../Utils/Hooks/useScrollY.jsx';
+
+// Styles
+import './Homepage.css';
 
 const Homepage = () => {
-
-    //custom hook per la chiamata GET/index all'API al backend
-    const { games, loading } = useGamesFetch();
+    // State globale dal Context
+    const { games, loading, error, searchTerms, setSearchTerms, selectedGenre, setSelectedGenre } = useGames();
     
-    //funzione per ottenere il valore di scroll verticale
+    // UI locale
     const scrollY = useScrollY();
-    
-    
-    //referenziamento sezione preview 
     const gamesRef = useRef();
-    //funzione per scrollare alla sezione preview
+    
+    //Scroll alla sezione
     const scrollToGames = () => {
-
         if (gamesRef.current) {
             gamesRef.current.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
-            })
+            });
         }
-
-    }
-
+    };
 
     return (
         <>
@@ -93,18 +97,45 @@ const Homepage = () => {
                     <p className='text-center text-gray-400 mt-3'>Scopri la nostra selezione curata dei migliori titoli gaming</p>
                     {/* Fine Titolo + descr di sezione */}
 
-
+                    
+                      {/* Search Bar */}
+                    <SearchBar name={'search'} searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
+                    {/* Fine Search Bar */}
+                    
+                    {/* Genre Filter */}
+                    <select 
+                        name="genre" 
+                        value={selectedGenre} 
+                        onChange={(e) => setSelectedGenre(e.target.value)} 
+                        className='text-black border bg-white px-4 py-2 rounded mt-4'
+                    >
+                        <option value="">Tutti i generi</option>
+                        <option value="1">Action</option>
+                        <option value="2">Adventure</option>
+                        <option value="3">RPG</option>
+                        <option value="4">Strategy</option>
+                        <option value="5">Sports</option>
+                        <option value="6">Shooter</option>
+                        <option value="7">Puzzle</option>
+                        <option value="8">Simulation</option>
+                        <option value="9">Racing</option>
+                        <option value="10">Horror</option>
+                    </select>
+                    {/* Fine Genre Filter */}                    
+                    
                     {/* Griglia Card Giochi */}
                     <div className="preview-grid-layout">
 
                         {loading ? (
                             <p className="text-center text-gray-400 col-span-full">Caricamento giochi...</p>
+                        ) : error ? (
+                            <p className="text-center text-red-400 col-span-full">Errore: {error}</p>
                         ) : games.length > 0 ? (
                             games.map((currentGame) => (
                                 <GameCard key={currentGame.id} image_url={currentGame.image_url} title={currentGame.title} genre={currentGame.genre.name} id={currentGame.id} />
                             ))
                         ) : (
-                            <p className="text-center text-gray-400 col-span-full">Nessun gioco disponibile</p>
+                            <p className="text-center text-gray-400 col-span-full">Nessun gioco trovato per questa ricerca</p>
                         )}
 
                     </div>
